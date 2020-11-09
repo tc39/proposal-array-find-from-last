@@ -1,6 +1,6 @@
 # Proposal `Array.prototype.findRight`
 
-A repository template for ECMAScript proposals.
+Proposal for a `.findRight()` method on array.
 
 ## Before creating a proposal
 
