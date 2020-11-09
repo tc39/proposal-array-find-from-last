@@ -1,4 +1,4 @@
-# template-for-proposals
+# Proposal `Array.prototype.findRight`
 
 A repository template for ECMAScript proposals.
 
