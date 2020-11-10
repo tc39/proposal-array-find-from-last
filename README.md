@@ -17,7 +17,7 @@ But There’s not a way to allow us find something `from the end to the start ` 
 1. unnecessary reverse (allocated here).
 2. `Array.prototype.reverse` is not immutable.
 
-You have to write the `findRight` in your code or `[...[]].reverse().find（）`. 
+You have to write the `findRight` in your codebase or `[...[]].reverse().find()`. 
 
 As the result the third issue:
 
