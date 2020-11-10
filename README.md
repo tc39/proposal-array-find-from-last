@@ -21,7 +21,7 @@ You have to write the `findRight` in your code or `[...[]].reverse().find（）`
 
 As the result the third issue:
 
-	3. unnecessary spread
+3. unnecessary spread
 
 So, perhaps we need `Array.prototype.findRight`.
 
