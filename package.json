@@ -1,7 +1,11 @@
 {
   "private": true,
   "name": "template-for-proposals",
-  "description": "A repository template for ECMAScript proposals.",
+  "description": "Proposal for a .findRight() method on array.",
+  "author": {
+    "name": "Wenlu Wang",
+    "email": "kingwenlu@gmail.com"
+  },
   "scripts": {
     "start": "npm run build-loose -- --watch",
     "build": "npm run build-loose -- --strict",
