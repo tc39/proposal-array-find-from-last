@@ -1,6 +1,6 @@
 # Proposal `Array.prototype.findRight`
 
-Proposal for a `.findRight()` method on array.
+Proposal for a `.findRight()` method on array. [(link)](https://kingwl.github.io/proposal-array-find-right/index.html)
 
 ## Motivation
 
