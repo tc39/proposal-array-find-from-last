@@ -15,7 +15,7 @@ contributors: Wenlu Wang
   <p>When the findRight method is called, the following steps are taken:</p>
   <emu-alg>
     1. Let O be ? ToObject(this value).
-    2. Let idx be ? LengthOfArrayLike(O).
+    2. Let idx be ? LengthOfArrayLike(O) - 1.
     3. If IsCallable(predicate) is false, throw a TypeError exception.
     4. Repeat, while idx >= 0
       1. Let Pi be ! ToString(idx).
@@ -30,7 +30,7 @@ contributors: Wenlu Wang
   <p>When the findIndexRight method is called with one or two arguments, the following steps are taken:</p>
   <emu-alg>
     1. Let O be ? ToObject(this value).
-    2. Let idx be ? LengthOfArrayLike(O).
+    2. Let idx be ? LengthOfArrayLike(O) - 1.
     3. If IsCallable(predicate) is false, throw a TypeError exception.
     4. Repeat, while idx >= 0
       1. Let Pi be ! ToString(idx).
