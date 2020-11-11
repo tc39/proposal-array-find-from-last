@@ -69,7 +69,7 @@ if (!Array.prototype.findIndexRight) {
         idx--;
       }
 
-      // 7. Return undefined.
+      // 7. Return -1.
       return -1;
     },
     configurable: true,
