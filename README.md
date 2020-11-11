@@ -27,7 +27,7 @@ For `.findIndex()`,  you must have much additional operations (re-calculate inde
 
 As the result, the fourth issue:
 
-	4. **complex index calculate**
+4. **complex index calculate**
 
 So, perhaps we need `Array.prototype.findRight` and `Array.prototype.findIndexRight`.
 
