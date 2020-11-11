@@ -6,10 +6,10 @@
 <pre class="metadata">
 title: Proposal-array-find-right
 stage: -1
-contributors: Wenlu Wang 
+contributors: Wenlu Wang
 </pre>
 
-<emu-clause id="sec-demo-clause">
+<emu-clause id="sec-array.prototype.findright">
   <h1>Array.prototype.findRight</h1>
   <p>The findRight method is called with one or two arguments, predicate and thisArg.</p>
   <p>When the findRight method is called, the following steps are taken:</p>
@@ -25,7 +25,8 @@ contributors: Wenlu Wang
       5. Set idx to idx - 1
     5. Return undefined
   </emu-alg>
-
+</emu-clause>
+<emu-clause id="sec-array.prototype.findindexright">
   <h1>Array.prototype.findIndexRight</h1>
   <p>The findIndexRight method is called with one or two arguments, predicate and thisArg.</p>
   <p>When the findIndexRight method is called with one or two arguments, the following steps are taken:</p>
@@ -41,11 +42,13 @@ contributors: Wenlu Wang
       5. Set idx to idx - 1
     5. Return -1
   </emu-alg>
-
+</emu-clause>
+<emu-clause id="sec-%typedarray%.prototype.findright">
   <h1>%TypedArray%.prototype.findRight</h1>
   <p>%TypedArray%.prototype.findRight is a distinct function that implements the same algorithm as Array.prototype.findRight except that the this object's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of "length". The implementation of the algorithm may be optimized with the knowledge that the this value is an object that has a fixed length and whose integer-indexed properties are not sparse. However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to predicate may cause the this value to become detached.</p>
   <p>This function is not generic. ValidateTypedArray is applied to the this value prior to evaluating the algorithm. If its result is an abrupt completion that exception is thrown instead of evaluating the algorithm.</p>
-
+</emu-clause>
+<emu-clause id="sec-%typedarray%.prototype.findindexright">
   <h1>%TypedArray%.prototype.findIndexRight</h1>
   <p>%TypedArray%.prototype.findIndexRight is a distinct function that implements the same algorithm as Array.prototype.findIndexRight except that the this object's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of "length". The implementation of the algorithm may be optimized with the knowledge that the this value is an object that has a fixed length and whose integer-indexed properties are not sparse. However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to predicate may cause the this value to become detached.</p>
   <p>This function is not generic. ValidateTypedArray is applied to the this value prior to evaluating the algorithm. If its result is an abrupt completion that exception is thrown instead of evaluating the algorithm.</p>
