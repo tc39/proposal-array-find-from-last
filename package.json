@@ -10,7 +10,7 @@
   "scripts": {
     "start": "npm run build-loose -- --watch",
     "build": "npm run build-loose -- --strict",
-    "build-loose": "ecmarkup --verbose spec.emu index.html"
+    "build-loose": "ecmarkup --verbose spec.emu docs/index.html"
   },
   "homepage": "https://github.com/Kingwl/proposal-array-find-right",
   "repository": {
