@@ -1,7 +1,8 @@
 {
-  "private": true,
-  "name": "template-for-proposals",
-  "description": "Proposal for a .findRight() method on array.",
+  "name": "proposal-array-find-right",
+  "description": "Proposal for .findRight() and .findIndexRight methods on array.",
+  "main": "index.js",
+  "version": "0.0.1",
   "author": {
     "name": "Wenlu Wang",
     "email": "kingwenlu@gmail.com"
@@ -11,10 +12,10 @@
     "build": "npm run build-loose -- --strict",
     "build-loose": "ecmarkup --verbose spec.emu index.html"
   },
-  "homepage": "https://github.com/tc39/template-for-proposals#readme",
+  "homepage": "https://github.com/Kingwl/proposal-array-find-right",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tc39/template-for-proposals.git"
+    "url": "git+https://github.com/Kingwl/proposal-array-find-right.git"
   },
   "license": "MIT",
   "devDependencies": {
