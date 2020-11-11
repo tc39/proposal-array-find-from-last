@@ -11,7 +11,8 @@ contributors: Wenlu Wang
 
 <emu-clause id="sec-demo-clause">
   <h1>Array.prototype.findRight</h1>
-  <p>The find method is called with one or two arguments, predicate and thisArg.</p>
+  <p>The findRight method is called with one or two arguments, predicate and thisArg.</p>
+  <p>When the findRight method is called, the following steps are taken:</p>
   <emu-alg>
     1. Let O be ? ToObject(this value).
     2. Let idx be ? LengthOfArrayLike(O).
@@ -23,5 +24,20 @@ contributors: Wenlu Wang
       4. If testResult is true, return iValue.
       5. Set idx to idx - 1
     5. Return undefined
+  </emu-alg>
+  <h1>Array.prototype.findIndexRight</h1>
+  <p>The findIndexRight method is called with one or two arguments, predicate and thisArg.</p>
+  <p>When the findIndexRight method is called with one or two arguments, the following steps are taken:</p>
+  <emu-alg>
+    1. Let O be ? ToObject(this value).
+    2. Let idx be ? LengthOfArrayLike(O).
+    3. If IsCallable(predicate) is false, throw a TypeError exception.
+    4. Repeat, while idx >= 0
+      1. Let Pi be ! ToString(idx).
+      2. Let iValue be ? Get(O, Pi).
+      3. Let testResult be ! ToBoolean(? Call(predicate, thisArg, « iValue, idx, O »)).
+      4. If testResult is true, return idx.
+      5. Set idx to idx - 1
+    5. Return -1
   </emu-alg>
 </emu-clause>
