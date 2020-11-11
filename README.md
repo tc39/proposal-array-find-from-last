@@ -64,6 +64,8 @@ array.findIndexRight(n => n.value === 42); // -1
 
 ```
 
+You can see the [polyfill](index.js)
+
 ## Related
 
 - [Array.prototype.reduceRight](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.reduceright)
@@ -72,4 +74,3 @@ array.findIndexRight(n => n.value === 42); // -1
 - [ramda.findLast](https://ramdajs.com/docs/#findLast)
 - [ramda.findLastIndex](https://ramdajs.com/docs/#findLastIndex)
 - [@extra-array/find-right](https://www.npmjs.com/package/@extra-array/find-right)
-
