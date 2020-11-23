@@ -1,5 +1,5 @@
 {
-  "name": "proposal-array-find-right",
+  "name": "proposal-array-find-from-right",
   "description": "Proposal for .findRight() and .findIndexRight methods on array.",
   "main": "index.js",
   "version": "0.0.1",
@@ -12,10 +12,10 @@
     "build": "npm run build-loose -- --strict",
     "build-loose": "ecmarkup --verbose spec.emu docs/index.html"
   },
-  "homepage": "https://github.com/Kingwl/proposal-array-find-right",
+  "homepage": "https://github.com/Kingwl/proposal-array-find-from-right",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kingwl/proposal-array-find-right.git"
+    "url": "git+https://github.com/Kingwl/proposal-array-find-from-right.git"
   },
   "license": "MIT",
   "devDependencies": {

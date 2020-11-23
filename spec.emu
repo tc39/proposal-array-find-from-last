@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
 <pre class="metadata">
-title: Proposal-array-find-right
+title: Proposal-array-find-from-right
 stage: -1
 contributors: Wenlu Wang
 </pre>

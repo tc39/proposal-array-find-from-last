@@ -1,4 +1,4 @@
-# [proposal-array-find-right](https://kingwl.github.io/proposal-array-find-right/index.html)
+# [proposal-array-find-from-right](https://kingwl.github.io/proposal-array-find-from-right/index.html)
 
 Proposal for `.findRight()` and `.findIndexRight` methods on array.
 
