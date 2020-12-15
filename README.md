@@ -1,6 +1,6 @@
-# [proposal-array-find-from-right](https://kingwl.github.io/proposal-array-find-from-right/index.html)
+# [proposal-array-find-from-last](https://kingwl.github.io/proposal-array-find-from-last/index.html)
 
-Proposal for `.findRight()` and `.findIndexRight` methods on array.
+Proposal for `.findLast()` and `.findLastIndex()` methods on array.
 
 ## Motivation
 
@@ -29,11 +29,11 @@ As the result, the fourth issue:
 
 4. **complex index calculate**
 
-So, perhaps we need `Array.prototype.findRight` and `Array.prototype.findIndexRight`.
+So, perhaps we need `Array.prototype.findLast` and `Array.prototype.findLastIndex`.
 
 ## Core features
 
-Add `Array.prototype.findRight` and `Array.prototype.findIndexRight`. 
+Add `Array.prototype.findLast` and `Array.prototype.findLastIndex`. 
 
 And we could use that like the [Array.prototype.find](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.find) and [Array.prototype.findIndex](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.findindex) but from the end to be start.
 
@@ -56,11 +56,11 @@ array.length - 1 - [...array].reverse().findIndex(n => n.value === 42); // shoul
 
 // ======== In the proposal =========== 
 // find
-array.findRight(n => n.value % 2 === 1); // { value: 3 }
+array.findLast(n => n.value % 2 === 1); // { value: 3 }
 
 // findIndex
-array.findIndexRight(n => n.value % 2 === 1); // 2
-array.findIndexRight(n => n.value === 42); // -1
+array.findLastIndex(n => n.value % 2 === 1); // 2
+array.findLastIndex(n => n.value === 42); // -1
 
 ```
 
@@ -68,7 +68,6 @@ You can see the [polyfill](index.js)
 
 ## Related
 
-- [Array.prototype.reduceRight](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.reduceright)
 - [lodash.findLast](https://lodash.com/docs/4.17.15#findLast)
 - [lodash.findLastIndex](https://lodash.com/docs/4.17.15#findLastIndex)
 - [ramda.findLast](https://ramdajs.com/docs/#findLast)
