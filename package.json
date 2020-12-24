@@ -1,6 +1,6 @@
 {
-  "name": "proposal-array-find-from-right",
-  "description": "Proposal for .findRight() and .findIndexRight methods on array.",
+  "name": "proposal-array-find-from-last",
+  "description": "Proposal for .findLast() and .findLastIndex methods on array.",
   "main": "index.js",
   "version": "0.0.1",
   "author": {
@@ -12,10 +12,10 @@
     "build": "npm run build-loose -- --strict",
     "build-loose": "ecmarkup --verbose spec.emu docs/index.html"
   },
-  "homepage": "https://github.com/Kingwl/proposal-array-find-from-right",
+  "homepage": "https://github.com/Kingwl/proposal-array-find-from-last",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kingwl/proposal-array-find-from-right.git"
+    "url": "git+https://github.com/Kingwl/proposal-array-find-from-last.git"
   },
   "license": "MIT",
   "devDependencies": {

@@ -1,5 +1,5 @@
-if (!Array.prototype.findRight) {
-  Object.defineProperty(Array.prototype, 'findRight', {
+if (!Array.prototype.findLast) {
+  Object.defineProperty(Array.prototype, 'findLast', {
     value: function (predicate) {
       // 1. Let O be ? ToObject(this value).
       if (this == null) {
@@ -38,8 +38,8 @@ if (!Array.prototype.findRight) {
   });
 }
 
-if (!Array.prototype.findIndexRight) {
-  Object.defineProperty(Array.prototype, 'findIndexRight', {
+if (!Array.prototype.findLastIndex) {
+  Object.defineProperty(Array.prototype, 'findLastIndex', {
     value: function (predicate) {
       // 1. Let O be ? ToObject(this value).
       if (this == null) {
