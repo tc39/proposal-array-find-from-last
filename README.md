@@ -4,30 +4,30 @@ Proposal for `.findLast()` and `.findLastIndex()` methods on array.
 
 ## Motivation
 
-Find something from array is a very common pattern in development. 
+Finding an element in an array is a very common programming pattern. 
 
-Now we have `Array.prototype.indexOf`, `Array.prototype.lastIndexOf` to find index of some `value` in the array.
+ECMAScript currently supports `Array.prototype.indexOf` and `Array.prototype.lastIndexOf` to find an index of some `value` in the array.
 
-And we also has `Array.prototype.find`, `Array.prototype.findIndex` to find some element or index who in the array in out customized way. 
+There is also `Array.prototype.find` and `Array.prototype.findIndex` to find the an element or its index in the array that satisfies a provided condition. 
 
-But There’s not a way to allow us find something `from the end to the start ` of array in customized way. 
+However, the language does not provide a method to find an element from the **end to the start** of an array with a condition function.
 
-`[].reverse().find()` is work. But there’s two issues:
+`[].reverse().find()` is a workaround but there are two issues:
 
 1. **unnecessary reverse.**
 2. **`Array.prototype.reverse` is not immutable.**
 
 You have to write `[...[]].reverse().find()`. 
 
-As the result, the third issue:
+As a result, there is a third issue:
 
 3. **unnecessary spread**
 
-For `.findIndex()`,  you must have much additional operations (re-calculate index and handle the `-1` ) for the result of `[...arr].reverse().findIndex()`.
+For `.findIndex()`, you are required to perform additional steps after calling the method (re-calculate the index and handle the `-1`) to calculate the result of `[...arr].reverse().findIndex()`.
 
-As the result, the fourth issue:
+Therefore there is a fourth issue:
 
-4. **complex index calculate**
+4. **complex index calculation**
 
 So, perhaps we need `Array.prototype.findLast` and `Array.prototype.findLastIndex`.
 
@@ -35,7 +35,7 @@ So, perhaps we need `Array.prototype.findLast` and `Array.prototype.findLastInde
 
 Add `Array.prototype.findLast` and `Array.prototype.findLastIndex`. 
 
-And we could use that like the [Array.prototype.find](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.find) and [Array.prototype.findIndex](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.findindex) but from the end to be start.
+This would behave the same as [Array.prototype.find](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.find) and [Array.prototype.findIndex](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.findindex) but would iterate from the end to start.
 
 eg:
 
