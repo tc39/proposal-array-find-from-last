@@ -5,7 +5,7 @@
 <script src="./spec.js"></script>
 <pre class="metadata">
 title: Proposal-array-find-from-last
-stage: 0
+stage: 1
 contributors: Wenlu Wang
 </pre>
 

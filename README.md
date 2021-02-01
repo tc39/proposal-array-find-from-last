@@ -1,6 +1,9 @@
-# [proposal-array-find-from-last](https://kingwl.github.io/proposal-array-find-from-last/index.html)
+# [proposal-array-find-from-last](https://tc39-transfer.github.io/proposal-array-find-from-last/index.html)
 
 Proposal for `.findLast()` and `.findLastIndex()` methods on array.
+
+## Status
+This proposal is a [stage 1 proposal](https://github.com/tc39/proposals/blob/master/stage-1-proposals.md) and waiting for feedback.
 
 ## Motivation
 
@@ -75,3 +78,7 @@ You can see the [polyfill](index.js)
 - [TypeScript internal findLast](https://github.com/microsoft/TypeScript/blob/master/src/compiler/core.ts#L226)
 - [TypeScript internal findLastIndex](https://github.com/microsoft/TypeScript/blob/master/src/compiler/core.ts#L248)
 - [@extra-array/find-right](https://www.npmjs.com/package/@extra-array/find-right)
+
+## Proposer
+
+Champion: @Kingwl(Wenlu Wang, KWL)
