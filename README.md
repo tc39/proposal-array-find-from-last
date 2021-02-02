@@ -20,26 +20,20 @@ ECMAScript currently supports `Array.prototype.indexOf` and `Array.prototype.las
 
 There is also `Array.prototype.find` and `Array.prototype.findIndex` to find the an element or its index in the array that satisfies a provided condition. 
 
-However, the language does not provide a method to find an element from the **end to the start** of an array with a condition function.
+However, the language does not provide a method to find an element **from the last to the first** of an array with a condition function.
 
-`[].reverse().find()` is a workaround but there are two issues:
+`[...[]].reverse().find()` is a workaround but there are two issues:
 
-1. **unnecessary reverse.**
-2. **`Array.prototype.reverse` is not immutable.**
-
-You have to write `[...[]].reverse().find()`. 
-
-As a result, there is a third issue:
-
-3. **unnecessary copy**
+1. **unnecessary mutation (by reverse).**
+2. **unnecessary copy (to avoid mutation)**
 
 For `.findIndex()`, you are required to perform additional steps after calling the method (re-calculate the index and handle the `-1`) to calculate the result of `[...arr].reverse().findIndex()`.
 
-Therefore there is a fourth issue:
+Therefore there is a third issue:
 
-4. **complex index calculation**
+3. **complex index calculation**
 
-So, perhaps we need `Array.prototype.findLast` and `Array.prototype.findLastIndex`.
+So, perhaps we need something directly and effectily. In this proposal, they are `Array.prototype.findLast` and `Array.prototype.findLastIndex`.
 
 ## Scenarios
 - You know find from last may have better performance (The target element on the tail of the array, could append with `push` or `concat` in a queue or stack, eg: recently matched time point in a timeline).
