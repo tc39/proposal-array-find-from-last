@@ -14,8 +14,8 @@ contributors: Wenlu Wang
   <emu-note>
     <p>
     _predicate_ should be a function that accepts three arguments and returns a value that is coercible to the Boolean value.
-    `findlast` calls predicate once for each element of the array, in descending order, until it finds one where _predicate_ returns *true*.
-    If such an element is found, *findlast* immediately returns that element value. Otherwise, `findLast` returns *undefined*.
+    `findLast` calls predicate once for each element of the array, in descending order, until it finds one where _predicate_ returns *true*.
+    If such an element is found, *findLast* immediately returns that element value. Otherwise, `findLast` returns *undefined*.
     </p>
     <p>
     If a _thisArg_ parameter is provided, it will be used as the *this* value for each invocation of predicate. If it is not provided, *undefined* is used instead.
@@ -39,7 +39,7 @@ contributors: Wenlu Wang
     2. Let _idx_ be ? LengthOfArrayLike(_O_)) - 1.
     3. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
     4. Repeat, while _idx_ >= 0
-      1. Let _Pi) be ! ToString(_idx_).
+      1. Let _Pi_ be ! ToString(_idx_).
       2. Let _iValue_ be ? Get(_O_, _Pi_).
       3. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, « _iValue_, _idx_, _O_ »)).
       4. If _testResult_ is *true*, return _iValue_.
