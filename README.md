@@ -9,6 +9,13 @@ This proposal is a [stage 1 proposal](https://github.com/tc39/proposals/blob/mas
 
 Finding an element in an array is a very common programming pattern. 
 
+**The proposal has two major concerns:**
+
+1. Semantical. Which means `clearly representing the operation i want`.
+2. Performance. Avoid obvious overhead. And improve the constants in the time complexity or average-case complexity.
+
+---
+
 ECMAScript currently supports `Array.prototype.indexOf` and `Array.prototype.lastIndexOf` to find an index of some `value` in the array.
 
 There is also `Array.prototype.find` and `Array.prototype.findIndex` to find the an element or its index in the array that satisfies a provided condition. 
@@ -24,7 +31,7 @@ You have to write `[...[]].reverse().find()`.
 
 As a result, there is a third issue:
 
-3. **unnecessary spread**
+3. **unnecessary copy**
 
 For `.findIndex()`, you are required to perform additional steps after calling the method (re-calculate the index and handle the `-1`) to calculate the result of `[...arr].reverse().findIndex()`.
 
@@ -34,11 +41,16 @@ Therefore there is a fourth issue:
 
 So, perhaps we need `Array.prototype.findLast` and `Array.prototype.findLastIndex`.
 
+## Scenarios
+- You know find from last may have better performance (The target element on the tail of the array, could append with `push` or `concat` in a queue or stack, eg: recently matched time point in a timeline).
+- You care about the order of the elements (May have duplicate item in the array, eg: last odd in the list of numbers).
+- Etc.
+
 ## Core features
 
 Add `Array.prototype.findLast` and `Array.prototype.findLastIndex`. 
 
-This would behave the same as [Array.prototype.find](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.find) and [Array.prototype.findIndex](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.findindex) but would iterate from the end to start.
+This would behave the same as [Array.prototype.find](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.find) and [Array.prototype.findIndex](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.findindex) but would iterate from the last to the first.
 
 eg:
 
