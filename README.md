@@ -9,10 +9,10 @@ This proposal is a [stage 1 proposal](https://github.com/tc39/proposals/blob/mas
 
 Finding an element in an array is a very common programming pattern. 
 
-**The proposal has two major concerns:**
+The proposal has a major concerns: **Semantical**. Which means `clearly representing the operation i want`.
 
-1. Semantical. Which means `clearly representing the operation i want`.
-2. Performance. Avoid obvious overhead. And may improve the constant factors in the time complexity or average-case complexity.
+And with the changes. There's a sugar here: Performance. Avoid obvious overhead. And may improve the constant factors in the time complexity.
+Even there's not an order of magnitude change. But it's may useful in some performance-sensitive scenarios. eg: React render function.
 
 ---
 
