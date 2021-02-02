@@ -12,7 +12,7 @@ Finding an element in an array is a very common programming pattern.
 **The proposal has two major concerns:**
 
 1. Semantical. Which means `clearly representing the operation i want`.
-2. Performance. Avoid obvious overhead. And improve the constant factors in the time complexity or average-case complexity.
+2. Performance. Avoid obvious overhead. And may improve the constant factors in the time complexity or average-case complexity.
 
 ---
 
