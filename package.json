@@ -1,7 +1,6 @@
 {
   "name": "proposal-array-find-from-last",
   "description": "Proposal for .findLast() and .findLastIndex methods on array.",
-  "main": "index.js",
   "version": "0.0.1",
   "author": {
     "name": "Wenlu Wang",
