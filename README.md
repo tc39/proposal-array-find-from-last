@@ -67,8 +67,6 @@ array.findLastIndex(n => n.value === 42); // -1
 
 ```
 
-You can see the [polyfill](index.js)
-
 ## Related
 
 - [lodash.findLast](https://lodash.com/docs/4.17.15#findLast)
@@ -81,4 +79,4 @@ You can see the [polyfill](index.js)
 
 ## Proposer
 
-Champion: @Kingwl(Wenlu Wang, KWL)
+Champion: @kingwl (Wenlu Wang, KWL)
