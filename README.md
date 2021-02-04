@@ -79,4 +79,6 @@ array.findLastIndex(n => n.value === 42); // -1
 
 ## Proposer
 
-Champion: @kingwl (Wenlu Wang, KWL)
+Champions:
+ - @Kingwl (Wenlu Wang, KWL)
+ - @DanielRosenwasser (Daniel Rosenwasser, DRR)
