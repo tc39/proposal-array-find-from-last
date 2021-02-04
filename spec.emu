@@ -11,7 +11,6 @@ contributors: Wenlu Wang
 
 <emu-clause id="sec-array.prototype.findlast">
   <h1>Array.prototype.findLast ( _predicate_ [ , _thisArg_ ] )</h1>
-  <p>The `findLast` method is called with one or two arguments, _predicate_ and _thisArg_.</p>
   <emu-note>
     <p>
     _predicate_ should be a function that accepts three arguments and returns a value that is coercible to a Boolean value.
