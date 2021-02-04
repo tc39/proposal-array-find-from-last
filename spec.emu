@@ -13,26 +13,26 @@ contributors: Wenlu Wang
   <h1>Array.prototype.findLast ( _predicate_ [ , _thisArg_ ] )</h1>
   <emu-note>
     <p>
-    _predicate_ should be a function that accepts three arguments and returns a value that is coercible to the Boolean value.
-    `findLast` calls predicate once for each element of the array, in descending order, until it finds one where _predicate_ returns *true*.
-    If such an element is found, *findLast* immediately returns that element value. Otherwise, `findLast` returns *undefined*.
+    _predicate_ should be a function that accepts three arguments and returns a value that is coercible to a Boolean value.
+    `findLast` calls _predicate_ once for each element of the array, in descending order, until it finds one where _predicate_ returns *true*.
+    If such an element is found, `findLast` immediately returns that element value.
+    Otherwise, `findLast` returns *undefined*.
     </p>
     <p>
-    If a _thisArg_ parameter is provided, it will be used as the *this* value for each invocation of predicate. If it is not provided, *undefined* is used instead.
+    If a _thisArg_ parameter is provided, it will be used as the *this* value for each invocation of _predicate_. If it is not provided, *undefined* is used instead.
     </p>
     <p>
     _predicate_ is called with three arguments: the value of the element, the index of the element, and the object being traversed.
     </p>
     <p>
-    *findLast* does not directly mutate the object on which it is called but the object may be mutated by the calls to _predicate_. 
+    `findLast` does not directly mutate the object on which it is called but the object may be mutated by the calls to _predicate_.
     </p>
     <p>
-    The range of elements processed by *findLast* is set before the first call to _predicate_.
-    Elements that are appended to the array after the call to *findLast* begins will not be visited by _predicate_.
-    If existing elements of the array are changed, their value as passed to _predicate_ will be the value at the time that *findLast* visits them.
+    The range of elements processed by `findLast` is set before the first call to _predicate_.
+    Elements that are appended to the array after the call to `findLast` begins will not be visited by _predicate_.
+    If existing elements of the array are changed, their value as passed to _predicate_ will be the value at the time that `findLast` visits them.
     </p>
   </emu-note>
-  <p>The `findLast` method is called with one or two arguments, _predicate_ and _thisArg_.</p>
   <p>When the `findLast` method is called, the following steps are taken:</p>
   <emu-alg>
     1. Let _O_ be ? ToObject(*this* value).
@@ -41,38 +41,39 @@ contributors: Wenlu Wang
     4. Repeat, while _idx_ >= 0
       1. Let _Pi_ be ! ToString(_idx_).
       2. Let _iValue_ be ? Get(_O_, _Pi_).
-      3. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, « _iValue_, _idx_, _O_ »)).
+      3. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _iValue_, _idx_, _O_ &raquo;)).
       4. If _testResult_ is *true*, return _iValue_.
       5. Set _idx_ to _idx_ - 1.
     5. Return *undefined*.
   </emu-alg>
   <emu-note>
+    <p>
     The `findLast` function is intentionally generic; it does not require that its *this* value be an Array object.
     Therefore it can be transferred to other kinds of objects for use as a method.
+    </p>
   </emu-note>
 </emu-clause>
 <emu-clause id="sec-array.prototype.findlastindex">
   <h1>Array.prototype.findLastIndex ( _predicate_ [ , _thisArg_ ] )</h1>
-  <p>The `findLastIndex` method is called with one or two arguments, _predicate_ and _thisArg_.</p>
   <emu-note>
     <p>
-    _predicate_ should be a function that accepts three arguments and returns a value that is coercible to the Boolean value.
-    `findLastIndex` calls predicate once for each element of the array, in descending order, until it finds one where _predicate_ returns *true*.
-    If such an element is found, *findLastIndex* immediately returns the index of that element value. Otherwise, `findLastIndex` returns -1.
+    _predicate_ should be a function that accepts three arguments and returns a value that is coercible to a Boolean value.
+    `findLastIndex` calls _predicate_ once for each element of the array, in descending order, until it finds one where _predicate_ returns *true*.
+    If such an element is found, `findLastIndex` immediately returns the index of that element value. Otherwise, `findLastIndex` returns -1.
     </p>
     <p>
-    If a _thisArg_ parameter is provided, it will be used as the *this* value for each invocation of predicate. If it is not provided, *undefined* is used instead.
+    If a _thisArg_ parameter is provided, it will be used as the *this* value for each invocation of _predicate_. If it is not provided, *undefined* is used instead.
     </p>
     <p>
     _predicate_ is called with three arguments: the value of the element, the index of the element, and the object being traversed.
     </p>
     <p>
-    *findLastIndex* does not directly mutate the object on which it is called but the object may be mutated by the calls to _predicate_. 
+    `findLastIndex` does not directly mutate the object on which it is called but the object may be mutated by the calls to _predicate_.
     </p>
     <p>
-    The range of elements processed by *findLastIndex* is set before the first call to _predicate_.
-    Elements that are appended to the array after the call to *findLastIndex* begins will not be visited by _predicate_.
-    If existing elements of the array are changed, their value as passed to _predicate_ will be the value at the time that *findLastIndex* visits them.
+    The range of elements processed by `findLastIndex` is set before the first call to _predicate_.
+    Elements that are appended to the array after the call to `findLastIndex` begins will not be visited by _predicate_.
+    If existing elements of the array are changed, their value as passed to _predicate_ will be the value at the time that `findLastIndex` visits them.
     </p>
   </emu-note>
   <p>When the `findLastIndex` method is called with one or two arguments, the following steps are taken:</p>
@@ -83,20 +84,23 @@ contributors: Wenlu Wang
     4. Repeat, while _idx_ >= 0
       1. Let _Pi_ be ! ToString(_idx_).
       2. Let _iValue_ be ? Get(_O_, _Pi_).
-      3. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, « _iValue_, _idx_, _O_ »)).
+      3. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _iValue_, _idx_, _O_ &raquo;)).
       4. If _testResult_ is *true*, return _idx_.
       5. Set _idx_ to _idx_ - 1.
     5. Return -1.
   </emu-alg>
   <emu-note>
+    <p>
     The `findLastIndex` function is intentionally generic; it does not require that its *this* value be an Array object.
     Therefore it can be transferred to other kinds of objects for use as a method.
+    </p>
   </emu-note>
 </emu-clause>
+
 <emu-clause id="sec-%typedarray%.prototype.findlast">
   <h1>%TypedArray%.prototype.findLast ( _predicate_ [ , _thisArg_ ] )</h1>
   <p>
-    `%TypedArray%.prototype.findLast` is a distinct function that implements the same algorithm as `Array.prototype.findLast` except that the *this* object's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
+    %TypedArray%`.prototype.findLast` is a distinct function that implements the same algorithm as `Array.prototype.findLast` as defined in <emu-xref href="#sec-array.prototype.findlast"></emu-xref>except that the *this* value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
     The implementation of the algorithm may be optimized with the knowledge that the *this* value is an object that has a fixed length and whose <emu-xref href="#integer-index">integer-indexed</emu-xref> properties are not sparse.
     However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the *this* value to become detached.
   </p>
@@ -105,9 +109,9 @@ contributors: Wenlu Wang
 <emu-clause id="sec-%typedarray%.prototype.findlastindex">
   <h1>%TypedArray%.prototype.findLastIndex ( _predicate_ [ , _thisArg_ ] )</h1>
   <p>
-    `%TypedArray%.prototype.findLastIndex` is a distinct function that implements the same algorithm as `Array.prototype.findLastIndex` except that the *this* object's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
+    %TypedArray%`.prototype.findLastIndex` is a distinct function that implements the same algorithm as `Array.prototype.findLastIndex` as defined in <emu-xref href="#sec-array.prototype.findlastindex"></emu-xref> except that the *this* value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
     The implementation of the algorithm may be optimized with the knowledge that the *this* value is an object that has a fixed length and whose <emu-xref href="#integer-index">integer-indexed</emu-xref> properties are not sparse.
-    However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the this *value* to become detached.
+    However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the *this* value to become detached.
   </p>
   <p>This function is not generic. ValidateTypedArray is applied to the *this* value prior to evaluating the algorithm. If its result is an abrupt completion that exception is thrown instead of evaluating the algorithm.</p>
 </emu-clause>
