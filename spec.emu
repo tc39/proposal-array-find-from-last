@@ -36,12 +36,12 @@ contributors: Wenlu Wang, Daniel Rosenwasser
   <p>When the `findLast` method is called, the following steps are taken:</p>
   <emu-alg>
     1. Let _O_ be ? ToObject(*this* value).
-    1. Let _idx_ be ? LengthOfArrayLike(_O_)) - 1.
+    1. Let _idx_ be ? LengthOfArrayLike(_O_) - 1.
     1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
-    1. Repeat, while _idx_ >= 0
-      1. Let _Pi_ be ! ToString(_idx_).
+    1. Repeat, while _idx_ &ge; 0
+      1. Let _Pi_ be ! ToString(𝔽(_idx_)).
       1. Let _iValue_ be ? Get(_O_, _Pi_).
-      1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _iValue_, _idx_, _O_ &raquo;)).
+      1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _iValue_, 𝔽(_idx_), _O_ &raquo;)).
       1. If _testResult_ is *true*, return _iValue_.
       1. Set _idx_ to _idx_ - 1.
     1. Return *undefined*.
@@ -81,13 +81,13 @@ contributors: Wenlu Wang, Daniel Rosenwasser
     1. Let _O_ be ? ToObject(*this* value).
     1. Let _idx_ be ? LengthOfArrayLike(_O_) - 1.
     1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
-    1. Repeat, while _idx_ >= 0
-      1. Let _Pi_ be ! ToString(_idx_).
+    1. Repeat, while _idx_ &ge; 0
+      1. Let _Pi_ be ! ToString(𝔽(_idx_)).
       1. Let _iValue_ be ? Get(_O_, _Pi_).
-      1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _iValue_, _idx_, _O_ &raquo;)).
-      1. If _testResult_ is *true*, return _idx_.
+      1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _iValue_, 𝔽(_idx_), _O_ &raquo;)).
+      1. If _testResult_ is *true*, return 𝔽(_idx_).
       1. Set _idx_ to _idx_ - 1.
-    1. Return -1.
+    1. Return *-1*<sub>𝔽</sub>.
   </emu-alg>
   <emu-note>
     <p>
