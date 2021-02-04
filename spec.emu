@@ -96,10 +96,11 @@ contributors: Wenlu Wang
     </p>
   </emu-note>
 </emu-clause>
+
 <emu-clause id="sec-%typedarray%.prototype.findlast">
   <h1>%TypedArray%.prototype.findLast ( _predicate_ [ , _thisArg_ ] )</h1>
   <p>
-    `%TypedArray%.prototype.findLast` is a distinct function that implements the same algorithm as `Array.prototype.findLast` except that the *this* object's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
+    %TypedArray%`.prototype.findLast` is a distinct function that implements the same algorithm as `Array.prototype.findLast` as defined in <emu-xref href="#sec-array.prototype.findlast"></emu-xref>except that the *this* value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
     The implementation of the algorithm may be optimized with the knowledge that the *this* value is an object that has a fixed length and whose <emu-xref href="#integer-index">integer-indexed</emu-xref> properties are not sparse.
     However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the *this* value to become detached.
   </p>
@@ -108,9 +109,9 @@ contributors: Wenlu Wang
 <emu-clause id="sec-%typedarray%.prototype.findlastindex">
   <h1>%TypedArray%.prototype.findLastIndex ( _predicate_ [ , _thisArg_ ] )</h1>
   <p>
-    `%TypedArray%.prototype.findLastIndex` is a distinct function that implements the same algorithm as `Array.prototype.findLastIndex` except that the *this* object's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
+    %TypedArray%`.prototype.findLastIndex` is a distinct function that implements the same algorithm as `Array.prototype.findLastIndex` as defined in <emu-xref href="#sec-array.prototype.findlastindex"></emu-xref> except that the *this* value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
     The implementation of the algorithm may be optimized with the knowledge that the *this* value is an object that has a fixed length and whose <emu-xref href="#integer-index">integer-indexed</emu-xref> properties are not sparse.
-    However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the this *value* to become detached.
+    However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the *this* value to become detached.
   </p>
   <p>This function is not generic. ValidateTypedArray is applied to the *this* value prior to evaluating the algorithm. If its result is an abrupt completion that exception is thrown instead of evaluating the algorithm.</p>
 </emu-clause>
