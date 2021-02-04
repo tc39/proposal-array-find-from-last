@@ -81,4 +81,4 @@ array.findLastIndex(n => n.value === 42); // -1
 
 Champion:
  - @Kingwl (Wenlu Wang, KWL)
- - @DanielRosenwasser (DRR)
+ - @DanielRosenwasser (Daniel Rosenwasser, DRR)
