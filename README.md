@@ -1,4 +1,4 @@
-# [proposal-array-find-from-last](https://tc39-transfer.github.io/proposal-array-find-from-last/index.html)
+# [proposal-array-find-from-last](https://tc39.es/proposal-array-find-from-last/index.html)
 
 Proposal for `.findLast()` and `.findLastIndex()` methods on array.
 
