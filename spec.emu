@@ -6,7 +6,7 @@
 <pre class="metadata">
 title: Proposal-array-find-from-last
 stage: 1
-contributors: Wenlu Wang
+contributors: Wenlu Wang, Daniel Rosenwasser
 </pre>
 
 <emu-clause id="sec-array.prototype.findlast">
