@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./spec.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
-<title>Proposal-array-find-from-last</title><script type="application/json" id="sdo-map">{}</script><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-array.prototype.findlast","aoid":null,"title":"Array.prototype.findLast ( predicate [ , thisArg ] )","titleHTML":"Array.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"1","namespace":"<no location>","location":"","referencingIds":["_ref_0"],"key":"Array.prototype.findLast ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-array.prototype.findlastindex","aoid":null,"title":"Array.prototype.findLastIndex ( predicate [ , thisArg ] )","titleHTML":"Array.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"2","namespace":"<no location>","location":"","referencingIds":["_ref_1"],"key":"Array.prototype.findLastIndex ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-%typedarray%.prototype.findlast","aoid":null,"title":"%TypedArray%.prototype.findLast ( predicate [ , thisArg ] )","titleHTML":"%TypedArray%.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"3","namespace":"<no location>","location":"","referencingIds":[],"key":"%TypedArray%.prototype.findLast ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-%typedarray%.prototype.findlastindex","aoid":null,"title":"%TypedArray%.prototype.findLastIndex ( predicate [ , thisArg ] )","titleHTML":"%TypedArray%.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"4","namespace":"<no location>","location":"","referencingIds":[],"key":"%TypedArray%.prototype.findLastIndex ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>'use strict';
+<title>Proposal-array-find-from-last</title><script type="application/json" id="sdo-map">{}</script><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-array.prototype.findlast","aoid":null,"title":"Array.prototype.findLast ( predicate [ , thisArg ] )","titleHTML":"Array.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"1","namespace":"<no location>","location":"","referencingIds":["_ref_0"],"key":"Array.prototype.findLast ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-array.prototype.findlastindex","aoid":null,"title":"Array.prototype.findLastIndex ( predicate [ , thisArg ] )","titleHTML":"Array.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"2","namespace":"<no location>","location":"","referencingIds":["_ref_1"],"key":"Array.prototype.findLastIndex ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-array.prototype-@@unscopables","aoid":null,"title":"Array.prototype [ @@unscopables ]","titleHTML":"Array.prototype [ @@unscopables ]","number":"3","namespace":"<no location>","location":"","referencingIds":[],"key":"Array.prototype [ @@unscopables ]"},{"type":"clause","id":"sec-%typedarray%.prototype.findlast","aoid":null,"title":"%TypedArray%.prototype.findLast ( predicate [ , thisArg ] )","titleHTML":"%TypedArray%.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"4","namespace":"<no location>","location":"","referencingIds":[],"key":"%TypedArray%.prototype.findLast ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-%typedarray%.prototype.findlastindex","aoid":null,"title":"%TypedArray%.prototype.findLastIndex ( predicate [ , thisArg ] )","titleHTML":"%TypedArray%.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )","number":"5","namespace":"<no location>","location":"","referencingIds":[],"key":"%TypedArray%.prototype.findLastIndex ( predicate [ , thisArg ] )"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>'use strict';
 
 var sdoBox = {
   init: function () {
@@ -1124,6 +1124,39 @@ function installFindLocalReferences() {
 }
 
 document.addEventListener('DOMContentLoaded', installFindLocalReferences);
+var decimalBullet = Array.apply(null, Array(100)).map(function (a, i) {
+  return '' + (i + 1);
+});
+var alphaBullet = Array.apply(null, Array(26)).map(function (a, i) {
+  return String.fromCharCode('a'.charCodeAt(0) + i);
+});
+
+// prettier-ignore
+var romanBullet = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii', 'xiii', 'xiv', 'xv', 'xvi', 'xvii', 'xviii', 'xix', 'xx', 'xxi', 'xxii', 'xxiii', 'xxiv', 'xxv'];
+// prettier-ignore
+var bullets = [decimalBullet, alphaBullet, romanBullet, decimalBullet, alphaBullet, romanBullet];
+
+function addStepNumberText(ol, parentIndex) {
+  for (var i = 0; i < ol.children.length; ++i) {
+    var child = ol.children[i];
+    var index = parentIndex.concat([i]);
+    var applicable = bullets[Math.min(index.length - 1, 5)];
+    var span = document.createElement('span');
+    span.textContent = (applicable[i] || '?') + '. ';
+    span.style.fontSize = '0';
+    span.setAttribute('aria-hidden', 'true');
+    child.prepend(span);
+    var sublist = child.querySelector('ol');
+    if (sublist != null) {
+      addStepNumberText(sublist, index);
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('emu-alg > ol').forEach(function (ol) {
+    addStepNumberText(ol, []);
+  });
+});
 </script><style>body {
   display: flex;
   font-size: 18px;
@@ -1280,6 +1313,7 @@ emu-note[type='editor'] {
 emu-note > div.note-contents {
   flex-grow: 1;
   flex-shrink: 1;
+  overflow: auto;
 }
 
 emu-note > div.note-contents > p:first-of-type {
@@ -1488,7 +1522,6 @@ h1 span.title {
 
 h1 {
   font-size: 2.67em;
-  margin-top: 2em;
   margin-bottom: 0;
   line-height: 1em;
 }
@@ -1506,51 +1539,6 @@ h5 {
 }
 h6 {
   font-size: 1em;
-}
-
-h1:hover span.utils {
-  display: block;
-}
-
-span.utils {
-  font-size: 18px;
-  line-height: 18px;
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  font-weight: normal;
-}
-
-span.utils:before {
-  content: '⤷';
-  display: inline-block;
-  padding: 0 5px;
-}
-
-span.utils > * {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-h1 span.utils span.anchor a,
-h2 span.utils span.anchor a,
-h3 span.utils span.anchor a,
-h4 span.utils span.anchor a,
-h5 span.utils span.anchor a,
-h6 span.utils span.anchor a {
-  text-decoration: none;
-  font-variant: small-caps;
-}
-
-h1 span.utils span.anchor a:hover,
-h2 span.utils span.anchor a:hover,
-h3 span.utils span.anchor a:hover,
-h4 span.utils span.anchor a:hover,
-h5 span.utils span.anchor a:hover,
-h6 span.utils span.anchor a:hover {
-  color: #333;
 }
 
 emu-intro h1,
@@ -1663,6 +1651,38 @@ emu-clause,
 emu-intro,
 emu-annex {
   display: block;
+}
+
+/* these values are twice the font-size for the <h1> titles for clauses */
+emu-intro,
+emu-clause,
+emu-annex {
+  margin-top: 4em;
+}
+emu-intro emu-intro,
+emu-clause emu-clause,
+emu-annex emu-annex {
+  margin-top: 3.12em;
+}
+emu-intro emu-intro emu-intro,
+emu-clause emu-clause emu-clause,
+emu-annex emu-annex emu-annex {
+  margin-top: 2.5em;
+}
+emu-intro emu-intro emu-intro emu-intro,
+emu-clause emu-clause emu-clause emu-clause,
+emu-annex emu-annex emu-annex emu-annex {
+  margin-top: 2.22em;
+}
+emu-intro emu-intro emu-intro emu-intro emu-intro,
+emu-clause emu-clause emu-clause emu-clause emu-clause,
+emu-annex emu-annex emu-annex emu-annex emu-annex {
+  margin-top: 2em;
+}
+emu-intro emu-intro emu-intro emu-intro emu-intro emu-intro,
+emu-clause emu-clause emu-clause emu-clause emu-clause emu-clause,
+emu-annex emu-annex emu-annex emu-annex emu-annex emu-annex {
+  margin-top: 1.8em;
 }
 
 /* Figures and tables */
@@ -2248,7 +2268,23 @@ li.menu-search-result-term:before {
     display: none;
   }
 }
-</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-array.prototype.findlast" title="Array.prototype.findLast ( predicate [ , thisArg ] )"><span class="secnum">1</span> Array.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-array.prototype.findlastindex" title="Array.prototype.findLastIndex ( predicate [ , thisArg ] )"><span class="secnum">2</span> Array.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-%typedarray%.prototype.findlast" title="%TypedArray%.prototype.findLast ( predicate [ , thisArg ] )"><span class="secnum">3</span> %TypedArray%.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-%typedarray%.prototype.findlastindex" title="%TypedArray%.prototype.findLastIndex ( predicate [ , thisArg ] )"><span class="secnum">4</span> %TypedArray%.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 1 Draft / February 9, 2021</h1><h1 class="title">Proposal-array-find-from-last</h1>
+
+[normative-optional] {
+  border-left: 5px solid #ff6600;
+  padding: 0.5em;
+  display: block;
+  background: #ffeedd;
+}
+
+.normative-optional-tag {
+  text-transform: uppercase;
+  color: #884400;
+}
+
+.normative-optional-tag a {
+  color: #884400;
+}
+</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-array.prototype.findlast" title="Array.prototype.findLast ( predicate [ , thisArg ] )"><span class="secnum">1</span> Array.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-array.prototype.findlastindex" title="Array.prototype.findLastIndex ( predicate [ , thisArg ] )"><span class="secnum">2</span> Array.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-array.prototype-@@unscopables" title="Array.prototype [ @@unscopables ]"><span class="secnum">3</span> Array.prototype [ @@unscopables ]</a></li><li><span class="item-toggle-none"></span><a href="#sec-%typedarray%.prototype.findlast" title="%TypedArray%.prototype.findLast ( predicate [ , thisArg ] )"><span class="secnum">4</span> %TypedArray%.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-%typedarray%.prototype.findlastindex" title="%TypedArray%.prototype.findLastIndex ( predicate [ , thisArg ] )"><span class="secnum">5</span> %TypedArray%.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 1 Draft / February 18, 2021</h1><h1 class="title">Proposal-array-find-from-last</h1>
 
 <emu-clause id="sec-array.prototype.findlast">
   <h1><span class="secnum">1</span> Array.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</h1>
@@ -2315,24 +2351,33 @@ li.menu-search-result-term:before {
     </p>
   </div></emu-note>
 </emu-clause>
+<emu-clause id="sec-array.prototype-@@unscopables">
+  <h1><span class="secnum">3</span> Array.prototype [ @@unscopables ]</h1>
+  <p>The initial value of the @@unscopables <emu-xref href="#sec-object-type"><a href="https://tc39.es/ecma262/#sec-object-type">data property</a></emu-xref> is an object created by the following steps:</p>
+  <emu-alg><ol><li>Let <var>unscopableList</var> be OrdinaryObjectCreate(<emu-val>null</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_16"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"copyWithin"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_17"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"entries"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_18"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"fill"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_19"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"find"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_20"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"findIndex"</emu-val>, <emu-val>true</emu-val>).</li><li><ins>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_21"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"findLast"</emu-val>, <emu-val>true</emu-val>). </ins></li><li><ins>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_22"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"findLastIndex"</emu-val>, <emu-val>true</emu-val>). </ins></li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_23"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"flat"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_24"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"flatMap"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_25"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"includes"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_26"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"keys"</emu-val>, <emu-val>true</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_27"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>unscopableList</var>, <emu-val>"values"</emu-val>, <emu-val>true</emu-val>).</li></ol></emu-alg>
+  <p>
+    This property has the attributes { [[Writable]]: <emu-val>false</emu-val>, [[Enumerable]]: <emu-val>false</emu-val>, [[Configurable]]: <emu-val>true</emu-val> }.
+  </p>
+</emu-clause>
+
 
 <emu-clause id="sec-%typedarray%.prototype.findlast">
-  <h1><span class="secnum">3</span> %TypedArray%.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</h1>
+  <h1><span class="secnum">4</span> %TypedArray%.prototype.findLast ( <var>predicate</var> [ , <var>thisArg</var> ] )</h1>
   <p>
     <emu-xref href="#sec-%typedarray%-intrinsic-object"><a href="https://tc39.es/ecma262/#sec-%typedarray%-intrinsic-object">%TypedArray%</a></emu-xref><code>.prototype.findLast</code> is a distinct function that implements the same algorithm as <code>Array.prototype.findLast</code> as defined in <emu-xref href="#sec-array.prototype.findlast" id="_ref_0"><a href="#sec-array.prototype.findlast">1</a></emu-xref>except that the <emu-val>this</emu-val> value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of <emu-val>"length"</emu-val>.
     The implementation of the algorithm may be optimized with the knowledge that the <emu-val>this</emu-val> value is an object that has a fixed length and whose <emu-xref href="#integer-index"><a href="https://tc39.es/ecma262/#integer-index">integer-indexed</a></emu-xref> properties are not sparse.
     However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to <var>predicate</var> may cause the <emu-val>this</emu-val> value to become detached.
   </p>
-  <p>This function is not generic. <emu-xref aoid="ValidateTypedArray" id="_ref_16"><a href="https://tc39.es/ecma262/#sec-validatetypedarray">ValidateTypedArray</a></emu-xref> is applied to the <emu-val>this</emu-val> value prior to evaluating the algorithm. If its result is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> that exception is thrown instead of evaluating the algorithm.</p>
+  <p>This function is not generic. <emu-xref aoid="ValidateTypedArray" id="_ref_28"><a href="https://tc39.es/ecma262/#sec-validatetypedarray">ValidateTypedArray</a></emu-xref> is applied to the <emu-val>this</emu-val> value prior to evaluating the algorithm. If its result is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> that exception is thrown instead of evaluating the algorithm.</p>
 </emu-clause>
 <emu-clause id="sec-%typedarray%.prototype.findlastindex">
-  <h1><span class="secnum">4</span> %TypedArray%.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )</h1>
+  <h1><span class="secnum">5</span> %TypedArray%.prototype.findLastIndex ( <var>predicate</var> [ , <var>thisArg</var> ] )</h1>
   <p>
     <emu-xref href="#sec-%typedarray%-intrinsic-object"><a href="https://tc39.es/ecma262/#sec-%typedarray%-intrinsic-object">%TypedArray%</a></emu-xref><code>.prototype.findLastIndex</code> is a distinct function that implements the same algorithm as <code>Array.prototype.findLastIndex</code> as defined in <emu-xref href="#sec-array.prototype.findlastindex" id="_ref_1"><a href="#sec-array.prototype.findlastindex">2</a></emu-xref> except that the <emu-val>this</emu-val> value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of <emu-val>"length"</emu-val>.
     The implementation of the algorithm may be optimized with the knowledge that the <emu-val>this</emu-val> value is an object that has a fixed length and whose <emu-xref href="#integer-index"><a href="https://tc39.es/ecma262/#integer-index">integer-indexed</a></emu-xref> properties are not sparse.
     However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to <var>predicate</var> may cause the <emu-val>this</emu-val> value to become detached.
   </p>
-  <p>This function is not generic. <emu-xref aoid="ValidateTypedArray" id="_ref_17"><a href="https://tc39.es/ecma262/#sec-validatetypedarray">ValidateTypedArray</a></emu-xref> is applied to the <emu-val>this</emu-val> value prior to evaluating the algorithm. If its result is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> that exception is thrown instead of evaluating the algorithm.</p>
+  <p>This function is not generic. <emu-xref aoid="ValidateTypedArray" id="_ref_29"><a href="https://tc39.es/ecma262/#sec-validatetypedarray">ValidateTypedArray</a></emu-xref> is applied to the <emu-val>this</emu-val> value prior to evaluating the algorithm. If its result is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> that exception is thrown instead of evaluating the algorithm.</p>
 </emu-clause><emu-annex id="sec-copyright-and-software-license">
       <h1><span class="secnum">A</span> Copyright &amp; Software License</h1>
       
