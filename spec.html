@@ -96,6 +96,29 @@ contributors: Wenlu Wang, Daniel Rosenwasser
     </p>
   </emu-note>
 </emu-clause>
+<emu-clause id="sec-array.prototype-@@unscopables">
+  <h1>Array.prototype [ @@unscopables ]</h1>
+  <p>The initial value of the @@unscopables <emu-xref href="#sec-object-type">data property</emu-xref> is an object created by the following steps:</p>
+  <emu-alg>
+    1. Let _unscopableList_ be OrdinaryObjectCreate(*null*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"copyWithin"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"entries"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"fill"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"find"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"findIndex"*, *true*).
+    1. <ins>Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"findLast"*, *true*). </ins>
+    1. <ins>Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"findLastIndex"*, *true*). </ins>
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"flat"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"flatMap"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"includes"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"keys"*, *true*).
+    1. Perform ! CreateDataPropertyOrThrow(_unscopableList_, *"values"*, *true*).
+  </emu-alg>
+  <p>
+    This property has the attributes { [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }.
+  </p>
+</emu-clause>
+
 
 <emu-clause id="sec-%typedarray%.prototype.findlast">
   <h1>%TypedArray%.prototype.findLast ( _predicate_ [ , _thisArg_ ] )</h1>
