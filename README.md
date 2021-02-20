@@ -1,6 +1,6 @@
 # [proposal-array-find-from-last](https://tc39.es/proposal-array-find-from-last/index.html)
 
-Proposal for `.findLast()` and `.findLastIndex()` methods on array.
+Proposal for `.findLast()` and `.findLastIndex()` methods on array and typed array.
 
 ## Status
 This proposal is a [stage 1 proposal](https://github.com/tc39/proposals/blob/master/stage-1-proposals.md) and waiting for feedback.
@@ -16,9 +16,9 @@ Even there's not an order of magnitude change. But it's may useful in some perfo
 
 ---
 
-ECMAScript currently supports `Array.prototype.indexOf` and `Array.prototype.lastIndexOf` to find an index of some `value` in the array.
+ECMAScript currently supports `{Array, %TypedArray%}.prototype.indexOf` and `{Array, %TypedArray%}.prototype.lastIndexOf` to find an index of some `value` in the array.
 
-There is also `Array.prototype.find` and `Array.prototype.findIndex` to find the an element or its index in the array that satisfies a provided condition. 
+There is also `{Array, %TypedArray%}.prototype.find` and `{Array, %TypedArray%}.prototype.findIndex` to find the an element or its index in the array that satisfies a provided condition. 
 
 However, the language does not provide a method to find an element **from the last to the first** of an array with a condition function.
 
@@ -33,7 +33,7 @@ Therefore there is a third issue:
 
 3. **complex index calculation**
 
-So, perhaps we need something directly and effectily. In this proposal, they are `Array.prototype.findLast` and `Array.prototype.findLastIndex`.
+So, perhaps we need something directly and effectily. In this proposal, they are `{Array, %TypedArray%}.prototype.findLast` and `{Array, %TypedArray%}.prototype.findLastIndex`.
 
 ## Scenarios
 - You know find from last may have better performance (The target element on the tail of the array, could append with `push` or `concat` in a queue or stack, eg: recently matched time point in a timeline).
@@ -42,7 +42,7 @@ So, perhaps we need something directly and effectily. In this proposal, they are
 
 ## Core features
 
-Add `Array.prototype.findLast` and `Array.prototype.findLastIndex`. 
+Add `{Array, %TypedArray%}.prototype.findLast` and `{Array, %TypedArray%}.prototype.findLastIndex`. 
 
 This would behave the same as [Array.prototype.find](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.find) and [Array.prototype.findIndex](https://www.ecma-international.org/ecma-262/11.0/index.html#sec-array.prototype.findindex) but would iterate from the last to the first.
 
