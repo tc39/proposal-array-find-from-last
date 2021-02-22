@@ -77,6 +77,10 @@ array.findLastIndex(n => n.value === 42); // -1
  - For stage 1: https://drive.google.com/file/d/1nzO9cjy4YlRa8h6ntTJ4Is8mx--sTuL_/view
  - For stage 2: https://drive.google.com/file/d/1rhER8TZ5GsHDzl8nLvo8qSIQCUXPw3AQ/view
 
+## Polyfill
+
+A polyfill is available in the [core-js](https://github.com/zloirock/core-js) library. You can find it in the [ECMAScript proposals section](https://github.com/zloirock/core-js#array-find-from-last).
+
 ## Related
 
 - [lodash.findLast](https://lodash.com/docs/4.17.15#findLast)
