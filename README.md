@@ -3,7 +3,7 @@
 Proposal for `.findLast()` and `.findLastIndex()` methods on array and typed array.
 
 ## Status
-This proposal is a [stage 1 proposal](https://github.com/tc39/proposals/blob/master/stage-1-proposals.md) and waiting for feedback.
+This proposal is a [stage 2 proposal](https://github.com/tc39/proposals#stage-2) and waiting for feedback.
 
 ## Motivation
 
