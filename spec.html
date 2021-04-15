@@ -134,7 +134,7 @@ contributors: Wenlu Wang, Daniel Rosenwasser
     1. Let _k_ be _len_ - 1.
     1. Repeat, while _k_ &ge; 0
       1. Let _Pk_ be ! ToString(𝔽(_k_)).
-      1. Let _kValue_ be ? Get(_O_, _Pk_).
+      1. Let _kValue_ be ! Get(_O_, _Pk_).
       1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _kValue_, 𝔽(_k_), _O_ &raquo;)).
       1. If _testResult_ is *true*, return _kValue_.
       1. Set _k_ to _k_ - 1.
@@ -155,7 +155,7 @@ contributors: Wenlu Wang, Daniel Rosenwasser
     1. Let _k_ be _len_ - 1.
     1. Repeat, while _k_ &ge; 0
       1. Let _Pk_ be ! ToString(𝔽(_k_)).
-      1. Let _kValue_ be ? Get(_O_, _Pk_).
+      1. Let _kValue_ be ! Get(_O_, _Pk_).
       1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _kValue_, 𝔽(_k_), _O_ &raquo;)).
       1. If _testResult_ is *true*, return 𝔽(_k_).
       1. Set _k_ to _k_ - 1.
