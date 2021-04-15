@@ -36,8 +36,9 @@ contributors: Wenlu Wang, Daniel Rosenwasser
   <p>When the `findLast` method is called, the following steps are taken:</p>
   <emu-alg>
     1. Let _O_ be ? ToObject(*this* value).
-    1. Let _k_ be ? LengthOfArrayLike(_O_) - 1.
+    1. Let _len_ be ? LengthOfArrayLike(_O_).
     1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
+    1. Let _k_ be _len_ - 1.
     1. Repeat, while _k_ &ge; 0
       1. Let _Pk_ be ! ToString(𝔽(_k_)).
       1. Let _kValue_ be ? Get(_O_, _Pk_).
@@ -79,8 +80,9 @@ contributors: Wenlu Wang, Daniel Rosenwasser
   <p>When the `findLastIndex` method is called, the following steps are taken:</p>
   <emu-alg>
     1. Let _O_ be ? ToObject(*this* value).
-    1. Let _k_ be ? LengthOfArrayLike(_O_) - 1.
+    1. Let _len_ be ? LengthOfArrayLike(_O_) - 1.
     1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
+    1. Let _k_ be _len_ - 1.
     1. Repeat, while _k_ &ge; 0
       1. Let _Pk_ be ! ToString(𝔽(_k_)).
       1. Let _kValue_ be ? Get(_O_, _Pk_).
@@ -122,19 +124,42 @@ contributors: Wenlu Wang, Daniel Rosenwasser
 
 <emu-clause id="sec-%typedarray%.prototype.findlast">
   <h1>%TypedArray%.prototype.findLast ( _predicate_ [ , _thisArg_ ] )</h1>
-  <p>
-    %TypedArray%`.prototype.findLast` is a distinct function that implements the same algorithm as `Array.prototype.findLast` as defined in <emu-xref href="#sec-array.prototype.findlast"></emu-xref>except that the *this* value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
-    The implementation of the algorithm may be optimized with the knowledge that the *this* value is an object that has a fixed length and whose <emu-xref href="#integer-index">integer-indexed</emu-xref> properties are not sparse.
-    However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the *this* value to become detached.
-  </p>
-  <p>This function is not generic. ValidateTypedArray is applied to the *this* value prior to evaluating the algorithm. If its result is an abrupt completion that exception is thrown instead of evaluating the algorithm.</p>
+  <p>The interpretation and use of the arguments of %TypedArray%`.prototype.findLast` are the same as for `Array.prototype.findLast` as defined in <emu-xref href="#sec-array.prototype.findlast"></emu-xref>.</p>
+  <p>When the `findLast` method is called, the following steps are taken:</p>
+  <emu-alg>
+    1. Let _O_ be the *this* value.
+    1. Perform ? ValidateTypedArray(_O_).
+    1. Let _len_ be _O_.[[ArrayLength]].
+    1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
+    1. Let _k_ be _len_ - 1.
+    1. Repeat, while _k_ &ge; 0
+      1. Let _Pk_ be ! ToString(𝔽(_k_)).
+      1. Let _kValue_ be ? Get(_O_, _Pk_).
+      1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _kValue_, 𝔽(_k_), _O_ &raquo;)).
+      1. If _testResult_ is *true*, return _kValue_.
+      1. Set _k_ to _k_ - 1.
+    1. Return *undefined*.
+  </emu-alg>
+  <p>This function is not generic. The *this* value must be an object with a [[TypedArrayName]] internal slot.</p>
 </emu-clause>
+
 <emu-clause id="sec-%typedarray%.prototype.findlastindex">
   <h1>%TypedArray%.prototype.findLastIndex ( _predicate_ [ , _thisArg_ ] )</h1>
-  <p>
-    %TypedArray%`.prototype.findLastIndex` is a distinct function that implements the same algorithm as `Array.prototype.findLastIndex` as defined in <emu-xref href="#sec-array.prototype.findlastindex"></emu-xref> except that the *this* value's [[ArrayLength]] internal slot is accessed in place of performing a [[Get]] of *"length"*.
-    The implementation of the algorithm may be optimized with the knowledge that the *this* value is an object that has a fixed length and whose <emu-xref href="#integer-index">integer-indexed</emu-xref> properties are not sparse.
-    However, such optimization must not introduce any observable changes in the specified behaviour of the algorithm and must take into account the possibility that calls to _predicate_ may cause the *this* value to become detached.
-  </p>
-  <p>This function is not generic. ValidateTypedArray is applied to the *this* value prior to evaluating the algorithm. If its result is an abrupt completion that exception is thrown instead of evaluating the algorithm.</p>
+  <p>The interpretation and use of the arguments of %TypedArray%`.prototype.findLastIndex` are the same as for `Array.prototype.findLastIndex` as defined in <emu-xref href="#sec-array.prototype.findlastindex"></emu-xref>.</p>
+  <p>When the `findLastIndex` method is called, the following steps are taken:</p>
+  <emu-alg>
+    1. Let _O_ be the *this* value.
+    1. Perform ? ValidateTypedArray(_O_).
+    1. Let _len_ be _O_.[[ArrayLength]].
+    1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
+    1. Let _k_ be _len_ - 1.
+    1. Repeat, while _k_ &ge; 0
+      1. Let _Pk_ be ! ToString(𝔽(_k_)).
+      1. Let _kValue_ be ? Get(_O_, _Pk_).
+      1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _thisArg_, &laquo; _kValue_, 𝔽(_k_), _O_ &raquo;)).
+      1. If _testResult_ is *true*, return 𝔽(_k_).
+      1. Set _k_ to _k_ - 1.
+    1. Return *-1*<sub>𝔽</sub>.
+  </emu-alg>
+  <p>This function is not generic. The *this* value must be an object with a [[TypedArrayName]] internal slot.</p>
 </emu-clause>
