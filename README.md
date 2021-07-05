@@ -76,6 +76,7 @@ array.findLastIndex(n => n.value === 42); // -1
 ## Slides
  - For stage 1: https://drive.google.com/file/d/1nzO9cjy4YlRa8h6ntTJ4Is8mx--sTuL_/view
  - For stage 2: https://drive.google.com/file/d/1rhER8TZ5GsHDzl8nLvo8qSIQCUXPw3AQ/view
+ - For stage 3: https://kingwl.github.io/proposal-array-find-from-last-looking-for-stage-3-sides
 
 ## Polyfill
 
