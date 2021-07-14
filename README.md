@@ -81,7 +81,8 @@ array.findLastIndex(n => n.value === 42); // -1
 
 ## Polyfill
 
-A polyfill is available in the [core-js](https://github.com/zloirock/core-js) library. You can find it in the [ECMAScript proposals section](https://github.com/zloirock/core-js#array-find-from-last).
+ - [core-js](https://github.com/zloirock/core-js): you can find it in the [ECMAScript proposals section](https://github.com/zloirock/core-js#array-find-from-last)
+ - es-shims: [array.prototype.findlast](https://www.npmjs.com/package/array.prototype.findlast) / [array.prototype.findlastindex](https://www.npmjs.com/package/array.prototype.findlastindex)
 
 ## Related
 
