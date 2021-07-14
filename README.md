@@ -3,7 +3,8 @@
 Proposal for `.findLast()` and `.findLastIndex()` methods on array and typed array.
 
 ## Status
-This proposal is a [stage 2 proposal](https://github.com/tc39/proposals#stage-2) and waiting for feedback.
+
+This proposal is a [stage 3 proposal](https://github.com/tc39/proposals#stage-3) and seeking implementation feedback.
 
 ## Motivation
 
@@ -33,7 +34,7 @@ Therefore there is a third issue:
 
 3. **complex index calculation**
 
-So, perhaps we need something directly and effectily. In this proposal, they are `{Array, %TypedArray%}.prototype.findLast` and `{Array, %TypedArray%}.prototype.findLastIndex`.
+So, perhaps we need something directly and effectively. In this proposal, they are `{Array, %TypedArray%}.prototype.findLast` and `{Array, %TypedArray%}.prototype.findLastIndex`.
 
 ## Scenarios
 - You know find from last may have better performance (The target element on the tail of the array, could append with `push` or `concat` in a queue or stack, eg: recently matched time point in a timeline).
