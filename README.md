@@ -19,7 +19,7 @@ Even there's not an order of magnitude change. But it's may useful in some perfo
 
 ECMAScript currently supports `{Array, %TypedArray%}.prototype.indexOf` and `{Array, %TypedArray%}.prototype.lastIndexOf` to find an index of some `value` in the array.
 
-There is also `{Array, %TypedArray%}.prototype.find` and `{Array, %TypedArray%}.prototype.findIndex` to find the an element or its index in the array that satisfies a provided condition. 
+There is also `{Array, %TypedArray%}.prototype.find` and `{Array, %TypedArray%}.prototype.findIndex` to find an element or its index in the array that satisfies a provided condition. 
 
 However, the language does not provide a method to find an element **from the last to the first** of an array with a condition function.
 
