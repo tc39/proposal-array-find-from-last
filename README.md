@@ -4,7 +4,7 @@ Proposal for `.findLast()` and `.findLastIndex()` methods on array and typed arr
 
 ## Status
 
-This proposal is a [stage 3 proposal](https://github.com/tc39/proposals#stage-3) and seeking implementation feedback.
+This is a [stage 4 proposal](https://github.com/tc39/proposals#stage-4).
 
 ## Motivation
 
@@ -78,6 +78,7 @@ array.findLastIndex(n => n.value === 42); // -1
  - For stage 1: https://drive.google.com/file/d/1nzO9cjy4YlRa8h6ntTJ4Is8mx--sTuL_/view
  - For stage 2: https://drive.google.com/file/d/1rhER8TZ5GsHDzl8nLvo8qSIQCUXPw3AQ/view
  - For stage 3: https://kingwl.github.io/proposal-array-find-from-last-looking-for-stage-3-sides
+ - For stage 4: https://github.com/DanielRosenwasser/findLast-and-findLastIndex-for-Stage-4/blob/10cfbc10e155641e3260c68c4d5902ee28de116a/findLast%20%26%20findLastIndex%20for%20Stage%204%20(TC39%20June%202022).pdf
 
 ## Polyfill
 
